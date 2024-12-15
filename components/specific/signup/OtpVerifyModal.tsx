@@ -21,8 +21,9 @@ import { SignInRoute, SignUpRoute } from "@/util/constaint/route";
 
 interface Props extends Omit<ModalProps, "children"> {
   data: SignupData;
+  onVerifySuccess?: () => void;
 }
-const OtpVerifyModal = ({ data, ...props }: Props) => {
+const OtpVerifyModal = ({ data, onVerifySuccess, ...props }: Props) => {
   const [countDown, setCountdown] = useState(10 * 60);
   const [countDownReSend, setCountdownReSend] = useState(60);
   const [isLoading, setIsLoading] = useState(false);
@@ -84,7 +85,7 @@ const OtpVerifyModal = ({ data, ...props }: Props) => {
       if (res.ok) {
         toast(response.message ?? "Đã xảy ra lỗi", { type: "success" });
         onClose();
-        router.push(SignInRoute)
+        onVerifySuccess && onVerifySuccess();
         return;
       }
 

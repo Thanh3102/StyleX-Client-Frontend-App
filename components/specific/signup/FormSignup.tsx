@@ -14,6 +14,7 @@ import OtpVerifyModal from "./OtpVerifyModal";
 import RenderIf from "@/components/ui/RenderIf";
 import { toast } from "react-toastify";
 import { SIGN_UP_URL } from "@/util/constaint/api-routes";
+import { useRouter } from "next/navigation";
 
 const zodSchema = z.object({
   name: z
@@ -37,6 +38,7 @@ const zodSchema = z.object({
 export type SignupData = z.infer<typeof zodSchema>;
 
 const FormSignup = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showOtpVerify, setShowOtpVerify] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -182,6 +184,7 @@ const FormSignup = () => {
           isOpen={showOtpVerify}
           onOpenChange={(open) => setShowOtpVerify(open)}
           data={getValues()}
+          onVerifySuccess={() => router.push(SignInRoute)}
         />
       </RenderIf>
     </>

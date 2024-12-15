@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <ToastContainer hideProgressBar/>
+          <ToastContainer hideProgressBar stacked/>
           {children}
         </Providers>
       </body>

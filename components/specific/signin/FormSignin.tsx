@@ -44,7 +44,6 @@ const FormSignin = () => {
         redirect: false,
       });
 
-      console.log(result);
 
       if (result?.ok) {
         router.push("/");
@@ -63,7 +62,7 @@ const FormSignin = () => {
   return (
     <>
       <form
-        className="w-1/2 min-w-[400px] max-w-[800px] flex flex-col gap-5"
+        className="w-2/3 min-w-[400px] max-w-[800px] flex flex-col gap-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h4 className="text-3xl font-bold">Đăng nhập</h4>

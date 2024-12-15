@@ -45,7 +45,7 @@ export const nextAuthOptions: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/",
+    signIn: "/signin",
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -73,6 +73,9 @@ export const nextAuthOptions: NextAuthOptions = {
       session.refreshToken = token.refreshToken;
       session.expiredIn = token.expiredIn;
       session.terminate = token.terminate;
+      // if (!session.terminate) {
+      //   return session;
+      // }
       return session;
     },
   },
