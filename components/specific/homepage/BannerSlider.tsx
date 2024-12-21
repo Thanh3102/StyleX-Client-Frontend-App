@@ -19,74 +19,42 @@ const BannerSlider = () => {
     {
       image: "/images/banner-nam-3.jpg",
       href: "/collections/nam",
-      description: (
-        <>
-          <span>Content</span>
-        </>
-      ),
+      description: <></>,
     },
     {
       image: "/images/banner-nu-2.jpg",
       href: "/collections/nu",
-      description: (
-        <>
-          <span>Content</span>
-        </>
-      ),
+      description: <></>,
     },
     {
       image: "/images/banner1.jpg",
       href: "/collections/nam",
-      description: (
-        <>
-          <span>Content</span>
-        </>
-      ),
+      description: <></>,
     },
     {
       image: "/images/banner-nu-1.jpg",
       href: "/collections/nu",
-      description: (
-        <>
-          <span>Content</span>
-        </>
-      ),
+      description: <></>,
     },
     {
       image: "/images/banner2.jpg",
       href: "/collections/nam",
-      description: (
-        <>
-          <span>Content</span>
-        </>
-      ),
+      description: <></>,
     },
     {
       image: "/images/banner-nu-3.jpg",
       href: "/collections/nu",
-      description: (
-        <>
-          <span>Content</span>
-        </>
-      ),
+      description: <></>,
     },
     {
       image: "/images/banner-nam-4.jpg",
       href: "/collections/nam",
-      description: (
-        <>
-          <span>Content</span>
-        </>
-      ),
+      description: <></>,
     },
     {
       image: "/images/banner-nu-4.jpg",
       href: "/collections/nam",
-      description: (
-        <>
-          <span>Content</span>
-        </>
-      ),
+      description: <></>,
     },
   ];
 

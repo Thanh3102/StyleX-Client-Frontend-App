@@ -17,7 +17,6 @@ import { SignupData } from "./FormSignup";
 import { SIGN_UP_URL, VERIFY_SIGN_UP_URL } from "@/util/constaint/api-routes";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { SignInRoute, SignUpRoute } from "@/util/constaint/route";
 
 interface Props extends Omit<ModalProps, "children"> {
   data: SignupData;
@@ -121,7 +120,7 @@ const OtpVerifyModal = ({ data, onVerifySuccess, ...props }: Props) => {
   }, [isCountDownReSend, countDownReSend]);
 
   return (
-    <Modal {...props}>
+    <Modal isDismissable={false} {...props}>
       <ModalContent>
         {(onClose) => (
           <>
@@ -153,9 +152,10 @@ const OtpVerifyModal = ({ data, onVerifySuccess, ...props }: Props) => {
             </ModalBody>
             <ModalFooter className="flex gap-4">
               <Button
-                isDisabled={isCountDownReSend}
+                isDisabled={isCountDownReSend || isLoading}
                 color="warning"
                 onClick={handleResend}
+                
               >
                 {isCountDownReSend
                   ? renderCountDown(countDownReSend)
@@ -164,7 +164,8 @@ const OtpVerifyModal = ({ data, onVerifySuccess, ...props }: Props) => {
               <Button
                 color="primary"
                 onClick={() => handleVerify(onClose)}
-                isDisabled={otp.length < 6}
+                isDisabled={otp.length < 6 || isLoading}
+                isLoading={isLoading}
               >
                 Xác thực
               </Button>
@@ -176,6 +177,4 @@ const OtpVerifyModal = ({ data, onVerifySuccess, ...props }: Props) => {
   );
 };
 export default OtpVerifyModal;
-function setShowOtpVerify(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}
+

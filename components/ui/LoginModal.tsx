@@ -11,7 +11,7 @@ import {
   RadioGroup,
 } from "@nextui-org/react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -49,6 +49,7 @@ const LoginModal = ({
   ...props
 }: Props) => {
   const [mode, setMode] = useState<"login" | "signup">("login");
+
   return (
     <Modal
       isDismissable={false}
@@ -110,6 +111,7 @@ const LoginForm = ({
   onLoginSuccess,
 }: LoginFormProps) => {
   const router = useRouter();
+  const pathname = usePathname()
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -133,7 +135,7 @@ const LoginForm = ({
 
       if (result?.ok) {
         onLoginSuccess && onLoginSuccess();
-        location.replace(redirect);
+        location.replace(pathname);
         toast.success("Đăng nhập thành công");
       } else {
         toast(result ? result.error : "Đã xảy ra lỗi", {

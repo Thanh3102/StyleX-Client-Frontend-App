@@ -1,22 +1,25 @@
+import { getCustomerInfo } from "@/app/api/customer";
 import GuestProfile from "@/components/specific/profile/GuestProfile";
-import LoginModal from "@/components/ui/LoginModal";
-import LogoutButton from "@/components/ui/LogoutButton";
+import UserProfile from "@/components/specific/profile/UserProfile";
 import { nextAuthOptions } from "@/lib/next-auth/nextAuthOptions";
 import { getServerSession } from "next-auth";
 
 const Page = async () => {
-  const session = await getServerSession(nextAuthOptions);
+  try {
+    const session = await getServerSession(nextAuthOptions);
 
-  if (session && !session.terminate) {
-    return (
-      <div className="flex flex-col gap-2">
-        <span>Profile page</span>
-        <span>Name: {session.user.name}</span>
-        <span>Email: {session.user.email}</span>
-      </div>
-    );
+    if (session && !session.terminate) {
+      const user = await getCustomerInfo(session?.accessToken);
+      return (
+        <div className="px-10 py-10 w-1/2">
+          <UserProfile user={user} />
+        </div>
+      );
+    }
+    return <GuestProfile />;
+  } catch (error) {
+    console.log(error);
+    return null;
   }
-
-  return <GuestProfile/>
 };
 export default Page;

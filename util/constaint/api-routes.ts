@@ -34,3 +34,9 @@ export const CANCEL_ORDER_URL = `${BASE_URL}/api/order`;
 export const CHECKOUT_ORDER_URL = `${BASE_URL}/api/order`;
 export const APPLY_VOUCHER_URL = `${BASE_URL}/api/order/voucher`;
 
+export const GET_USER_INFO = `${BASE_URL}/api/customer/info`;
+export const UPDATE_USER_INFO = `${BASE_URL}/api/customer/info`;
+export const CHANGE_USER_PASSWORD = `${BASE_URL}/api/customer/changePassword`;
+export const GET_ORDER_HISTORY = `${BASE_URL}/api/customer/history`;
+
+
