@@ -66,7 +66,7 @@ const HomepageSearch = ({ collections, setOpenSearch }: Props) => {
       timeoutRef.current = setTimeout(async () => {
         const response = await SearchProduct(query);
         setResult(response);
-      }, 300);
+      }, 1000);
     } catch (error) {
       setResult({
         products: [],
@@ -80,7 +80,7 @@ const HomepageSearch = ({ collections, setOpenSearch }: Props) => {
     clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(async () => {
       fetchData(value);
-    }, 300);
+    }, 1000);
   }, []);
 
   useEffect(() => {

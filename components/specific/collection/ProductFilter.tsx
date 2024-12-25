@@ -40,7 +40,7 @@ const ProductFilter = ({ categories }: Props) => {
       pathname
     );
 
-    router.push(url);
+    router.replace(url);
   };
 
   const handleClearFilter = () => {
@@ -49,7 +49,7 @@ const ProductFilter = ({ categories }: Props) => {
 
   const handleCategoryChange = (value: string) => {
     if (selectedCategory === value) {
-      router.push(
+      router.replace(
         clearParams(
           new URLSearchParams(Array.from(search.entries())),
           "category",

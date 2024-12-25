@@ -11,7 +11,7 @@ const Layout = ({ children }: Props) => {
       <div className="h-screen flex flex-col overflow-auto relative">
         <Header />
         <div className="flex-1">{children}</div>
-        <div className="bg-green-300 py-4">Footer</div>
+        {/* <div className="bg-green-300 py-4">Footer</div> */}
       </div>
 
       <CartSyncCheck />

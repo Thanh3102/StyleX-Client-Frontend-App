@@ -24,6 +24,7 @@ import RenderIf from "./RenderIf";
 import OtpVerifyModal from "../specific/signup/OtpVerifyModal";
 import { SIGN_UP_URL } from "@/util/constaint/api-routes";
 import { SyncCart } from "@/app/api/cart";
+import ForgetPasswordButton from "./ForgetPasswordButton";
 
 const LoginSchema = z.object({
   email: z
@@ -54,6 +55,7 @@ const LoginModal = ({
     <Modal
       isDismissable={false}
       isKeyboardDismissDisabled={false}
+      backdrop="blur"
       onClose={() => {
         onLoginClose && onLoginClose();
       }}
@@ -63,7 +65,7 @@ const LoginModal = ({
       }}
       {...props}
     >
-      <ModalContent className="">
+      <ModalContent className="min-w-[400px] w-[50vw] max-w-[600px]">
         <ModalBody>
           <RenderIf condition={mode === "login"}>
             <LoginForm
@@ -80,6 +82,7 @@ const LoginModal = ({
                 Đăng ký ngay
               </span>
             </span>
+            <ForgetPasswordButton />
           </RenderIf>
           <RenderIf condition={mode === "signup"}>
             <SignInForm />
@@ -111,7 +114,7 @@ const LoginForm = ({
   onLoginSuccess,
 }: LoginFormProps) => {
   const router = useRouter();
-  const pathname = usePathname()
+  const pathname = usePathname();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -153,7 +156,7 @@ const LoginForm = ({
         <h4 className="text-3xl font-bold">Đăng nhập</h4>
         <Input
           label="ĐỊA CHỈ EMAIL"
-          placeholder="Nhập email hợp lệ"
+          placeholder="Nhập email của bạn"
           isRequired
           isInvalid={!!errors.email}
           errorMessage={errors.email?.message}
@@ -266,10 +269,7 @@ const SignInForm = () => {
 
   return (
     <>
-      <form
-        className="w-1/2 min-w-[400px] max-w-[800px] flex flex-col gap-5"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
         <h4 className="text-3xl font-bold">Đăng ký</h4>
         <div className="flex flex-wrap -mx-2 [&>*]:px-2 gap-y-4">
           <Input

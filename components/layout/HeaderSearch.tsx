@@ -40,7 +40,7 @@ const HeaderSearch = () => {
       timeoutRef.current = setTimeout(async () => {
         const response = await SearchProduct(query);
         setResult(response);
-      }, 300);
+      }, 1000);
     } catch (error) {
       setResult({
         products: [],
@@ -54,7 +54,7 @@ const HeaderSearch = () => {
     clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(async () => {
       fetchData(value);
-    }, 300);
+    }, 1000);
   }, []);
 
   const handleClickOutside = (event: any) => {
@@ -137,7 +137,7 @@ const HeaderSearch = () => {
               </Link>
             ))}
             {result.products.map((product) => (
-              <Link href={`products/${product.id}`} key={product.id}>
+              <Link href={`/products/${product.id}`} key={product.id}>
                 <div className="py-1 flex items-center gap-4">
                   <IoShirtOutline />
                   <div className="flex flex-col">

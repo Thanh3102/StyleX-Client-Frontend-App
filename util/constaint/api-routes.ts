@@ -38,5 +38,8 @@ export const GET_USER_INFO = `${BASE_URL}/api/customer/info`;
 export const UPDATE_USER_INFO = `${BASE_URL}/api/customer/info`;
 export const CHANGE_USER_PASSWORD = `${BASE_URL}/api/customer/changePassword`;
 export const GET_ORDER_HISTORY = `${BASE_URL}/api/customer/history`;
+export const FORGET_PASSWORD_ROUTE = `${BASE_URL}/api/customer/forget-password`;
+export const RESET_PASSWORD_ROUTE = `${BASE_URL}/api/customer/reset-password`;
+
 
 

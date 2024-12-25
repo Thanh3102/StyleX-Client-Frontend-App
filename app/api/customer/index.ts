@@ -1,7 +1,9 @@
 import {
   CHANGE_USER_PASSWORD,
+  FORGET_PASSWORD_ROUTE,
   GET_ORDER_HISTORY,
   GET_USER_INFO,
+  RESET_PASSWORD_ROUTE,
   UPDATE_USER_INFO,
 } from "@/util/constaint/api-routes";
 import {
@@ -103,6 +105,44 @@ export const getCustomerOrderHistory = async (
       return data as OrderHistory;
     }
     throw new Error(data.message || res.statusText);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const requestResetPassword = async (email: string) => {
+  try {
+    const res = await fetch(FORGET_PASSWORD_ROUTE, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email }),
+    });
+    const response = (await res.json()) as { message: string };
+    if (res.ok) {
+      return response;
+    }
+    throw new Error(response.message);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const resetPassword = async (token: string, newPassword: string) => {
+  try {
+    const res = await fetch(RESET_PASSWORD_ROUTE, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token, newPassword }),
+    });
+    const response = (await res.json()) as { message: string };
+    if (res.ok) {
+      return response;
+    }
+    throw new Error(response.message);
   } catch (error) {
     throw error;
   }
