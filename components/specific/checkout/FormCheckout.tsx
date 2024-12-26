@@ -1,5 +1,9 @@
 "use client";
-import { CancelOrder, CheckoutOrder } from "@/app/api/order";
+import {
+  CancelOrder,
+  CheckoutOrder,
+  CreatePaymentPayOS,
+} from "@/app/api/order";
 import {
   DistrictSelector,
   ProvinceSelector,
@@ -9,9 +13,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, cn, Input, Radio, RadioGroup } from "@nextui-org/react";
 import { getSession, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { BsBoxSeam } from "react-icons/bs";
+import { BsBoxSeam, BsCreditCard } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { z } from "zod";
 
@@ -91,9 +95,9 @@ const FormCheckout = () => {
   const { data: session } = useSession();
   const searchParam = useSearchParams();
   const router = useRouter();
+
   const {
     register,
-    getValues,
     setValue,
     watch,
     handleSubmit,
@@ -120,14 +124,30 @@ const FormCheckout = () => {
   const onSubmit: SubmitHandler<CheckoutData> = async (data) => {
     try {
       const session = await getSession();
-      const { message } = await CheckoutOrder({
-        ...data,
-        orderId: searchParam.get("order") as string,
-        userType: session && !session.terminate ? "Guest" : "Customer",
-        customerId: session?.user.id,
-      });
-      toast.success(message ?? "Đã tạo đơn hàng");
-      router.push("/cart");
+      switch (data.paymentMethod) {
+        case "Thanh toán khi nhận hàng":
+          const { message } = await CheckoutOrder({
+            ...data,
+            orderId: searchParam.get("order") as string,
+            userType: session && !session.terminate ? "Guest" : "Customer",
+            customerId: session?.user.id,
+          });
+          toast.success(message ?? "Đã tạo đơn hàng");
+          router.push("/cart");
+          break;
+        case "Thanh toán qua thẻ ngân hàng":
+          const { checkoutUrl } = await CreatePaymentPayOS({
+            ...data,
+            orderId: searchParam.get("order") as string,
+            userType: session && !session.terminate ? "Guest" : "Customer",
+            customerId: session?.user.id,
+          });
+
+          console.log("Checkout url", checkoutUrl);
+
+          router.push(checkoutUrl);
+          break;
+      }
     } catch (error: any) {
       toast.error(error.message ?? "Đã có lỗi xảy ra. Vui lòng thử lại");
     }
@@ -168,6 +188,7 @@ const FormCheckout = () => {
             Hủy giao dịch
           </Button>
         </div>
+
         <label htmlFor="name" className="my-2 font-semibold text-lg">
           Thông tin cá nhân
         </label>
@@ -306,7 +327,7 @@ const FormCheckout = () => {
           <div className=" w-1/2">
             <div
               className={cn(
-                "flex gap-2 p-4 rounded-lg border-2 border-zinc-400 items-center justify-center",
+                "flex gap-2 p-4 rounded-lg border-2 border-zinc-400 items-center justify-center hover:cursor-pointer",
                 {
                   "border-blue-500 text-blue-500":
                     watch("paymentMethod") === "Thanh toán khi nhận hàng",
@@ -320,11 +341,23 @@ const FormCheckout = () => {
               <span>Thanh toán khi nhận hàng</span>
             </div>
           </div>
-          {/* <div className=" w-1/2">
-            <div className="flex gap-2 p-4 rounded-lg border-1 border-zinc-400 items-center justify-center">
-              Chuyển khoản
+          <div className=" w-1/2">
+            <div
+              className={cn(
+                "flex gap-2 p-4 rounded-lg border-2 border-zinc-400 items-center justify-center hover:cursor-pointer",
+                {
+                  "border-blue-500 text-blue-500":
+                    watch("paymentMethod") === "Thanh toán qua thẻ ngân hàng",
+                }
+              )}
+              onClick={() =>
+                setValue("paymentMethod", "Thanh toán qua thẻ ngân hàng")
+              }
+            >
+              <BsCreditCard size={20} />
+              Thanh toán qua thẻ ngân hàng
             </div>
-          </div> */}
+          </div>
         </div>
       </form>
     </>

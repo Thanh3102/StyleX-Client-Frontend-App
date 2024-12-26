@@ -172,6 +172,7 @@ const CheckoutItemInfo = () => {
             Xác nhận
           </Button>
         }
+        className="bg-white"
       />
 
       <div className="flex flex-col gap-1">

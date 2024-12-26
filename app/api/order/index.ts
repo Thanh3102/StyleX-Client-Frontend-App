@@ -4,6 +4,7 @@ import {
   CHECKOUT_ORDER_URL,
   CREATE_CUSTOMER_TEMP_ORDER_URL,
   CREATE_GUEST_TEMP_ORDER_URL,
+  CREATE_PAYMENT_PAYOS,
   GET_ORDER_DATA_URL,
 } from "@/util/constaint/api-routes";
 import { ApplyVoucherData, CreateTempOrderData, OrderData } from "./order.type";
@@ -107,6 +108,34 @@ export const ApplyVoucher = async (data: ApplyVoucherData) => {
       body: JSON.stringify(data),
     });
     const response = (await res.json()) as { message?: string };
+    if (res.ok) return response;
+    throw new Error(response.message);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const CreatePaymentPayOS = async (
+  data: CheckoutData & {
+    orderId: string;
+    userType: "Guest" | "Customer";
+    customerId?: string;
+  }
+) => {
+  try {
+    const res = await fetch(CREATE_PAYMENT_PAYOS, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    
+    const response = (await res.json()) as {
+      checkoutUrl: string;
+      message?: string;
+    };
+
     if (res.ok) return response;
     throw new Error(response.message);
   } catch (error) {

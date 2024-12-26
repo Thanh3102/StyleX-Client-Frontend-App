@@ -85,7 +85,7 @@ const LoginModal = ({
             <ForgetPasswordButton />
           </RenderIf>
           <RenderIf condition={mode === "signup"}>
-            <SignInForm />
+            <SignInForm onSucess={() => setMode("login")} />
             <span>
               Bạn đã có tài khoản ?{" "}
               <span
@@ -222,8 +222,11 @@ const signInSchema = z.object({
 });
 
 export type SignupData = z.infer<typeof signInSchema>;
+type SignInFormProps = {
+  onSucess?: () => void;
+};
 
-const SignInForm = () => {
+const SignInForm = ({ onSucess }: SignInFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showOtpVerify, setShowOtpVerify] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -366,7 +369,9 @@ const SignInForm = () => {
           isOpen={showOtpVerify}
           onOpenChange={(open) => setShowOtpVerify(open)}
           data={getValues()}
-          onVerifySuccess={() => {}}
+          onVerifySuccess={() => {
+            onSucess && onSucess();
+          }}
         />
       </RenderIf>
     </>

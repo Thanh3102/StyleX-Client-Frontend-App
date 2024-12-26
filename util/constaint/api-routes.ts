@@ -32,6 +32,7 @@ export const CREATE_GUEST_TEMP_ORDER_URL = `${BASE_URL}/api/order/guest`;
 export const GET_ORDER_DATA_URL = `${BASE_URL}/api/order`;
 export const CANCEL_ORDER_URL = `${BASE_URL}/api/order`;
 export const CHECKOUT_ORDER_URL = `${BASE_URL}/api/order`;
+export const CREATE_PAYMENT_PAYOS = `${BASE_URL}/api/order/payment/pay-os`;
 export const APPLY_VOUCHER_URL = `${BASE_URL}/api/order/voucher`;
 
 export const GET_USER_INFO = `${BASE_URL}/api/customer/info`;
