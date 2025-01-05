@@ -215,7 +215,7 @@ const CartListItem = ({ item, fetchData }: Props) => {
                 {item.variant.title}
               </span>
             </RenderIf>
-            <RenderIf condition={item.options.length > 0}>
+            <RenderIf condition={item.options?.length > 0}>
               <div className="flex gap-2 py-2">
                 {item.options.map((option) => (
                   <Select

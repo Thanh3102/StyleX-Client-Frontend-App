@@ -126,6 +126,10 @@ const CartList = () => {
   };
 
   const renderOrderPromotion = (promotions: Promotion[]) => {
+    if (!promotions) {
+      return null;
+    }
+
     return (
       <div className="w-[300px] max-h-[200px] overflow-y-auto p-2 rounded-md">
         {promotions.map((promotion) => (
@@ -230,11 +234,14 @@ const CartList = () => {
           <div className="bg-white p-5 rounded-lg shadow-large flex flex-col h-fit">
             <div
               className={cn("flex items-center justify-between", {
-                "justify-start": orderPromotions.length === 0,
+                "justify-start":
+                  orderPromotions && orderPromotions.length === 0,
               })}
             >
               <span className="text-lg font-semibold my-2">Thanh toán</span>
-              <RenderIf condition={orderPromotions.length > 0}>
+              <RenderIf
+                condition={!!(orderPromotions && orderPromotions.length > 0)}
+              >
                 <Tooltip
                   showArrow
                   placement="bottom"
