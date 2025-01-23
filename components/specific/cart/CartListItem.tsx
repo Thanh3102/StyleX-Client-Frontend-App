@@ -179,7 +179,7 @@ const CartListItem = ({ item, fetchData }: Props) => {
 
 
   return (
-    <div className="flex items-center py-2 px-5 text-sm">
+    <div className="flex items-center py-2 px-5 text-sm gap-x-4">
       <div className="flex gap-3 w-6/12">
         <Checkbox value={item.id.toString()} isDisabled={item.avaiable <= 0} />
         <div className="w-[100px] h-[150px] rounded-md relative border-1 border-zinc-400">
@@ -200,7 +200,7 @@ const CartListItem = ({ item, fetchData }: Props) => {
             </div>
           </RenderIf>
         </div>
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between flex-1">
           <div className="flex flex-col">
             <Link
               href={`/products/${item.product.id}?v=${item.variant.id}`}
@@ -252,7 +252,7 @@ const CartListItem = ({ item, fetchData }: Props) => {
         </div>
       </div>
       <div className="w-2/12">
-        <div className="flex flex-col  gap-2  ">
+        <div className="flex flex-col gap-2">
           <span
             className={cn("font-semibold", {
               "text-sm text-zinc-400 line-through": item.discountAmount > 0,

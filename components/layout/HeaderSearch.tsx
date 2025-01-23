@@ -62,6 +62,7 @@ const HeaderSearch = () => {
       setIsOpen(false);
     }
   };
+  
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();

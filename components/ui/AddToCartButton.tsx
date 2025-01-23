@@ -107,16 +107,20 @@ const AddToCartButton = ({ className, item, buttonProps }: Props) => {
   };
 
   const handleAdd = async (session: Session) => {
-    await AddItem(
-      {
-        productId: item.product.id,
-        variantId: item.variant.id,
-        quantity: item.quantity,
-        userId: session.user.id,
-      },
-      session.accessToken
-    );
-    toast(<ToastComponent />, { autoClose: 3000 });
+    try {
+      await AddItem(
+        {
+          productId: item.product.id,
+          variantId: item.variant.id,
+          quantity: item.quantity,
+          userId: session.user.id,
+        },
+        session.accessToken
+      );
+      toast(<ToastComponent />, { autoClose: 3000 });
+    } catch (error: any) {
+      toast.error(error.message)
+    }
   };
 
   const handleClick = async (

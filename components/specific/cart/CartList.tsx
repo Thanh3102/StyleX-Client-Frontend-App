@@ -197,7 +197,7 @@ const CartList = () => {
               </div>
             </RenderIf>
           </div>
-          <div className="shadow-lg rounded-lg border-1 border-zinc-400 relative">
+          <div className="shadow-lg rounded-lg border-1 border-zinc-400 relative min-w-[500px]">
             <div className="flex items-center font-semibold bg-zinc-50 px-5 py-5 sticky top-16 z-20 self-start">
               <div className="w-6/12">Sản phẩm</div>
               <div className="w-2/12">Đơn giá</div>

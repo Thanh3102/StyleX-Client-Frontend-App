@@ -173,7 +173,7 @@ const HomepageSearch = ({ collections, setOpenSearch }: Props) => {
                     className="object-fill max-w-full max-h-full"
                   />
                 </div>
-                <Link href={`${CollectionRoute}/${selectedCollection.slug}`}>
+                <Link href={`${CollectionRoute}/${selectedCollection?.slug}`}>
                   <span className="uppercase">Tất cả</span>
                 </Link>
               </div>
@@ -181,7 +181,7 @@ const HomepageSearch = ({ collections, setOpenSearch }: Props) => {
             {selectedCollection.categories.map((category) => (
               <div className="w-3/12 hover:cursor-pointer" key={category.id}>
                 <Link
-                  href={`${CollectionRoute}/${selectedCollection.slug}?category=${category.slug}`}
+                  href={`${CollectionRoute}/${selectedCollection?.slug}?category=${category?.slug}`}
                   className="p-4 flex gap-2 items-center"
                 >
                   <div className="w-10 flex aspect-square">
@@ -208,7 +208,7 @@ const HomepageSearch = ({ collections, setOpenSearch }: Props) => {
                 {result.categories.map((category) => (
                   <Link
                     key={category.id}
-                    href={`${CollectionRoute}/${category.collection.slug}?category=${category.slug}`}
+                    href={`${CollectionRoute}/${category.collection?.slug}?category=${category?.slug}`}
                   >
                     <div className="py-2 flex items-center gap-4">
                       <FaExternalLinkAlt />

@@ -8,6 +8,7 @@ export const GetCollections = async () => {
   try {
     const res = await fetch(GET_COLLECTION_URL, {
       method: "GET",
+      cache: "no-cache",
     });
     const data = await res.json();
 

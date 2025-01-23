@@ -4,7 +4,7 @@ import BannerSlider from "@/components/specific/homepage/BannerSlider";
 import { GetCollections } from "./api/collection";
 
 export default async function Home() {
-  const collections = await GetCollections();
+  const collections = await GetCollections() ?? [];
   return (
     <div className="relative h-screen w-screen bg-red-100">
       <HomepageHeader collections={collections} />
