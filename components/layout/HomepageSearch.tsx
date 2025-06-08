@@ -178,23 +178,26 @@ const HomepageSearch = ({ collections, setOpenSearch }: Props) => {
                 </Link>
               </div>
             </div>
-            {selectedCollection.categories.map((category) => (
-              <div className="w-3/12 hover:cursor-pointer" key={category.id}>
-                <Link
-                  href={`${CollectionRoute}/${selectedCollection?.slug}?category=${category?.slug}`}
-                  className="p-4 flex gap-2 items-center"
-                >
-                  <div className="w-10 flex aspect-square">
-                    <img
-                      alt=""
-                      src={category.image ?? ASSET_IMAGE_NOT_FOUND}
-                      className="object-fill max-w-full max-h-full"
-                    />
-                  </div>
-                  <span className="uppercase">{category.title}</span>
-                </Link>
-              </div>
-            ))}
+
+            {selectedCollection &&
+              selectedCollection.categories &&
+              selectedCollection.categories.map((category) => (
+                <div className="w-3/12 hover:cursor-pointer" key={category.id}>
+                  <Link
+                    href={`${CollectionRoute}/${selectedCollection?.slug}?category=${category?.slug}`}
+                    className="p-4 flex gap-2 items-center"
+                  >
+                    <div className="w-10 flex aspect-square">
+                      <img
+                        alt=""
+                        src={category.image ?? ASSET_IMAGE_NOT_FOUND}
+                        className="object-fill max-w-full max-h-full"
+                      />
+                    </div>
+                    <span className="uppercase">{category.title}</span>
+                  </Link>
+                </div>
+              ))}
           </div>
         </div>
       </RenderIf>
@@ -205,32 +208,36 @@ const HomepageSearch = ({ collections, setOpenSearch }: Props) => {
           <div className="pb-40 h-full">
             <div className="h-full overflow-y-auto p-5">
               <div className="flex flex-col gap-2">
-                {result.categories.map((category) => (
-                  <Link
-                    key={category.id}
-                    href={`${CollectionRoute}/${category.collection?.slug}?category=${category?.slug}`}
-                  >
-                    <div className="py-2 flex items-center gap-4">
-                      <FaExternalLinkAlt />
-                      <div className="flex flex-col">
-                        <span className=" uppercase">{category.title}</span>
-                        <span className="text-sm text-zinc-400 uppercase">
-                          {category.collection.title}
-                        </span>
+                <RenderIf condition={result.categories.length !== 0}>
+                  {result.categories.map((category) => (
+                    <Link
+                      key={category.id}
+                      href={`${CollectionRoute}/${category.collection?.slug}?category=${category?.slug}`}
+                    >
+                      <div className="py-2 flex items-center gap-4">
+                        <FaExternalLinkAlt />
+                        <div className="flex flex-col">
+                          <span className=" uppercase">{category.title}</span>
+                          <span className="text-sm text-zinc-400 uppercase">
+                            {category.collection.title}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
-                {result.products.map((product) => (
-                  <Link href={`products/${product.id}`} key={product.id}>
-                    <div className="py-2 flex items-center gap-4">
-                      <IoShirtOutline />
-                      <div className="flex flex-col">
-                        <span className=" uppercase">{product.name}</span>
+                    </Link>
+                  ))}
+                </RenderIf>
+                <RenderIf condition={result.products.length !== 0}>
+                  {result.products.map((product) => (
+                    <Link href={`products/${product.id}`} key={product.id}>
+                      <div className="py-2 flex items-center gap-4">
+                        <IoShirtOutline />
+                        <div className="flex flex-col">
+                          <span className=" uppercase">{product.name}</span>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
+                </RenderIf>
               </div>
             </div>
           </div>
