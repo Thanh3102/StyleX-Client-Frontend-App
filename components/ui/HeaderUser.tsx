@@ -28,9 +28,17 @@ const HeaderUser = () => {
           </div>
         </DropdownTrigger>
         <DropdownMenu>
-          <DropdownItem href="/profile">Thông tin cá nhân</DropdownItem>
-          <DropdownItem href="/history">Lịch sử mua hàng</DropdownItem>
-          <DropdownItem className="text-red-500" onClick={() => signOut()}>
+          <DropdownItem key={"profile"} href="/profile">
+            Thông tin cá nhân
+          </DropdownItem>
+          <DropdownItem key={"history"} href="/history">
+            Lịch sử mua hàng
+          </DropdownItem>
+          <DropdownItem
+            key={"sign-out"}
+            className="text-red-500"
+            onClick={() => signOut()}
+          >
             Đăng xuất
           </DropdownItem>
         </DropdownMenu>

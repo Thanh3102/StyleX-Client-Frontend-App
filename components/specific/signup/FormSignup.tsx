@@ -141,10 +141,13 @@ const FormSignup = () => {
           label="SINH NHẬT"
           description="Không thể chỉnh sửa ngày sinh sau khi bạn đăng ký tài khoản."
           maxValue={today(getLocalTimeZone())}
-          onChange={(dateValue) =>
+          onChange={(dateValue) => {
+            if (dateValue === null) return;
             setValue("dob", dateValue.toDate(getLocalTimeZone()), {
               shouldValidate: true,
-            })
+            });
+          }
+            
           }
         />
 

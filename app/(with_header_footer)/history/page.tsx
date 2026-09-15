@@ -1,16 +1,15 @@
 import { getCustomerOrderHistory } from "@/app/api/customer";
+import { auth } from "@/auth";
 import OrderStatusFilter from "@/components/specific/history/OrderStatusFilter";
 import OrderTable from "@/components/specific/history/OrderTable";
 import GuestProfile from "@/components/specific/profile/GuestProfile";
-import { nextAuthOptions } from "@/lib/next-auth/nextAuthOptions";
-import { getServerSession } from "next-auth";
 
 type Props = {
   searchParams: { status: string; page: string; limit: string };
 };
 const Page = async ({ searchParams }: Props) => {
   try {
-    const session = await getServerSession(nextAuthOptions);
+    const session = await auth()
 
     if (session && !session.terminate) {
       const orderHistory = await getCustomerOrderHistory(

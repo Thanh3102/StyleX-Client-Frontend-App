@@ -1,11 +1,11 @@
-import { REFRESH_TOKEN_ROUTE, SIGN_IN_URL } from "@/util/constaint/api-routes";
-import { NextAuthOptions } from "next-auth";
+import NextAuth from "next-auth";
+import Credentials from "next-auth/providers/credentials";
+import { REFRESH_TOKEN_ROUTE, SIGN_IN_URL } from "./util/constaint/api-routes";
 import { JWT } from "next-auth/jwt";
-import CredentialsProvider from "next-auth/providers/credentials";
 
-export const nextAuthOptions: NextAuthOptions = {
+export const { auth, handlers, signIn, signOut } = NextAuth({
   providers: [
-    CredentialsProvider({
+    Credentials({
       name: "Credentials",
       credentials: {
         email: {
@@ -68,7 +68,10 @@ export const nextAuthOptions: NextAuthOptions = {
     async session({ session, token }) {
       // console.log("[NextAuth-Session] Session", session);
       // console.log("[NextAuth-Session] Token", token);
-      session.user = token.user;
+      session.user = {
+        ...token.user,
+        emailVerified: null,
+      };
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
       session.expiredIn = token.expiredIn;
@@ -79,7 +82,7 @@ export const nextAuthOptions: NextAuthOptions = {
       return session;
     },
   },
-};
+});
 
 async function refreshToken(token: JWT) {
   const response = await fetch(REFRESH_TOKEN_ROUTE, {

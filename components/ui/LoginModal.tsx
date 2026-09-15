@@ -215,7 +215,7 @@ const signInSchema = z.object({
     .string({ required_error: "Vui lòng nhập mật khẩu" })
     .regex(
       /^(?=[a-zA-Z0-9-_.@]{8,20}$)(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9-_.@]*$/,
-      "Mật khẩu cần có từ 08 ký tự tới 20 ký tự (bao gồm cả chữ và số). Chỉ có thể sử dụng các ký tự đặc biệt này -_.@"
+      "Mật khẩu cần có từ 08 ký tự tới 20 ký tự (bao gồm cả chữ và số). Chỉ có thể sử dụng các ký tự đặc biệt này -_.@",
     ),
   dob: z.date({ required_error: "Vui lòng chọn ngày sinh" }),
   gender: z.string(),
@@ -329,12 +329,12 @@ const SignInForm = ({ onSucess }: SignInFormProps) => {
             label="SINH NHẬT"
             description="Không thể chỉnh sửa ngày sinh sau khi bạn đăng ký tài khoản."
             maxValue={today(getLocalTimeZone())}
-            onChange={(dateValue) =>
-              //@ts-ignore
+            onChange={(dateValue) => {
+              if (dateValue === null) return;
               setValue("dob", dateValue.toDate(getLocalTimeZone()), {
                 shouldValidate: true,
-              })
-            }
+              });
+            }}
           />
 
           <RadioGroup

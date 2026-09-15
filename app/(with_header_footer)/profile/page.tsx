@@ -1,12 +1,11 @@
 import { getCustomerInfo } from "@/app/api/customer";
+import { auth } from "@/auth";
 import GuestProfile from "@/components/specific/profile/GuestProfile";
 import UserProfile from "@/components/specific/profile/UserProfile";
-import { nextAuthOptions } from "@/lib/next-auth/nextAuthOptions";
-import { getServerSession } from "next-auth";
 
 const Page = async () => {
   try {
-    const session = await getServerSession(nextAuthOptions);
+    const session = await auth()
 
     if (session && !session.terminate) {
       const user = await getCustomerInfo(session?.accessToken);

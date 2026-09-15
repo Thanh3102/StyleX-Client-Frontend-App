@@ -4,10 +4,10 @@ import { FaHistory, FaRegCheckCircle } from "react-icons/fa";
 import { FaBasketShopping } from "react-icons/fa6";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Link from "next/link";
-import { getServerSession } from "next-auth";
 import RenderIf from "@/components/ui/RenderIf";
+import { auth } from "@/auth";
 const Page = async () => {
-  const session = await getServerSession();
+  const session = await auth()
   return (
     <>
       <Header />
