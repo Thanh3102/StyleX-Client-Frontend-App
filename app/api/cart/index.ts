@@ -24,7 +24,6 @@ import {
   UpdateItemVariantData,
   UpdateQuantityData,
 } from "./cart.type";
-import { headers } from "next/headers";
 
 export const AddItem = async (
   data: AddItemData,
