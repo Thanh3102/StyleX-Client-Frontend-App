@@ -7,11 +7,23 @@ import { redirect } from "next/navigation";
 
 
 type Props = {
-  params: { id: string };
-  searchParams: { v: string };
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ v: string }>;
 };
 
-const Page = async ({ params: { id }, searchParams: { v } }: Props) => {
+const Page = async (props: Props) => {
+  const searchParams = await props.searchParams;
+
+  const {
+    v
+  } = searchParams;
+
+  const params = await props.params;
+
+  const {
+    id
+  } = params;
+
   if (!isInteger(id)) redirect("/");
 
   const productDetail = await GetProductDetail(parseInt(id));

@@ -5,9 +5,10 @@ import OrderTable from "@/components/specific/history/OrderTable";
 import GuestProfile from "@/components/specific/profile/GuestProfile";
 
 type Props = {
-  searchParams: { status: string; page: string; limit: string };
+  searchParams: Promise<{ status: string; page: string; limit: string }>;
 };
-const Page = async ({ searchParams }: Props) => {
+const Page = async (props: Props) => {
+  const searchParams = await props.searchParams;
   try {
     const session = await auth()
 

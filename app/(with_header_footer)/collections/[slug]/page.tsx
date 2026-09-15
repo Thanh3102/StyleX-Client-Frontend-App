@@ -10,10 +10,16 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-const Page = async ({ params: { slug } }: Props) => {
+const Page = async (props: Props) => {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const collections = await GetCollections();
   const collection = await getCollectionDetail(slug);
   const breadcrumbItems: BreadcrumItemType[] = [

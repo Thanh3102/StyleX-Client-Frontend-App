@@ -1,3 +1,4 @@
+"use client";
 import { Card, Spinner } from "@heroui/react";
 const LoadingCard = () => {
   return (
@@ -9,4 +10,4 @@ const LoadingCard = () => {
   );
 };
 
-export default LoadingCard
+export default LoadingCard;
