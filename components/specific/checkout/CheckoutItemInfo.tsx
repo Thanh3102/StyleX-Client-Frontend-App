@@ -2,7 +2,7 @@
 
 import { ApplyVoucher, GetOrderData } from "@/app/api/order";
 import { OrderData } from "@/app/api/order/order.type";
-import { Button, Input, Spinner } from "@nextui-org/react";
+import { Button, Input, Spinner } from "@heroui/react";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";

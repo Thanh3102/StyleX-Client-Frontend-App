@@ -1,7 +1,7 @@
 "use client";
 
 import { OrderStatus } from "@/app/api/customer/customer.type";
-import { Select, SelectItem } from "@nextui-org/react";
+import { Select, SelectItem } from "@heroui/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const OrderStatusFilter = () => {

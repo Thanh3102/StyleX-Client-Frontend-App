@@ -1,6 +1,6 @@
 "use client";
 import { updateSearchParams } from "@/util/helper";
-import { Input } from "@nextui-org/react";
+import { Input } from "@heroui/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useRef } from "react";
 

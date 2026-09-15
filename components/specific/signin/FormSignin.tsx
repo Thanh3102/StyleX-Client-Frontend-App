@@ -3,7 +3,7 @@
 import Input from "@/components/common/Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {} from "@internationalized/date";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";

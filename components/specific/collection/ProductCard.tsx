@@ -10,7 +10,7 @@ import {
   PopoverContent,
   PopoverTrigger,
   Tooltip,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";

@@ -1,7 +1,7 @@
 import {
   DatePicker as NextuiDatePicker,
   DatePickerProps,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 interface Props extends DatePickerProps {}
 

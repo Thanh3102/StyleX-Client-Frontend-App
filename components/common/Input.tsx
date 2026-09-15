@@ -1,4 +1,4 @@
-import { InputProps, Input as NextuiInput } from "@nextui-org/react";
+import { InputProps, Input as NextuiInput } from "@heroui/react";
 import { forwardRef } from "react";
 
 export interface Props extends InputProps {}

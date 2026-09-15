@@ -2,7 +2,7 @@
 import { updateCustomerInfo } from "@/app/api/customer";
 import { CustomerInfo } from "@/app/api/customer/customer.type";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input, Radio, RadioGroup } from "@nextui-org/react";
+import { Button, Input, Radio, RadioGroup } from "@heroui/react";
 import { getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

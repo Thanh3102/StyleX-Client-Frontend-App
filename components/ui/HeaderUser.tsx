@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { FaRegUser } from "react-icons/fa6";
 import LoginModal from "./LoginModal";
 import { usePathname } from "next/navigation";

@@ -1,5 +1,5 @@
 "use client";
-import { Button, cn } from "@nextui-org/react";
+import { Button, cn } from "@heroui/react";
 import Link from "next/link";
 import Image from "next/image";
 import { BsCart3 } from "react-icons/bs";

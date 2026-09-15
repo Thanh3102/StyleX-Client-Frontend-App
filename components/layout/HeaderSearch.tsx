@@ -5,7 +5,7 @@ import {
   GetProductResponse,
   ProductSearchResponse,
 } from "@/app/api/product/product.type";
-import { Input, Spinner } from "@nextui-org/react";
+import { Input, Spinner } from "@heroui/react";
 import { useCallback, useEffect, useRef, useState, KeyboardEvent } from "react";
 import { FaExternalLinkAlt, FaSearch } from "react-icons/fa";
 import RenderIf from "../ui/RenderIf";

@@ -10,7 +10,7 @@ import {
   WardSelector,
 } from "@/components/ui/LocationSelector";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, cn, Input, Radio, RadioGroup } from "@nextui-org/react";
+import { Button, cn, Input, Radio, RadioGroup } from "@heroui/react";
 import { getSession, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";

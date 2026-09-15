@@ -16,7 +16,7 @@ import {
   TableHeader,
   TableRow,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 import OrderStatusCard from "./OrderStatusCard";

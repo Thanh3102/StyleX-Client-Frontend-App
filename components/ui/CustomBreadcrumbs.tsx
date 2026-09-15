@@ -5,7 +5,7 @@ import {
   Breadcrumbs,
   BreadcrumbsProps,
   cn,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 export type BreadcrumItemType = {
   title: string;

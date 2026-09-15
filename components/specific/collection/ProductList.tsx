@@ -3,7 +3,7 @@ import { GetProduct } from "@/app/api/product";
 import { BasicProduct } from "@/app/api/product/product.type";
 import { useEffect, useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
-import { Button, Select, SelectItem } from "@nextui-org/react";
+import { Button, Select, SelectItem } from "@heroui/react";
 import { useSearchParams } from "next/navigation";
 import RenderIf from "@/components/ui/RenderIf";
 import ProductSkeleton from "./ProductSkeleton";

@@ -1,4 +1,4 @@
-import { Card, Spinner } from "@nextui-org/react";
+import { Card, Spinner } from "@heroui/react";
 const LoadingCard = () => {
   return (
     <div className="w-full h-full flex items-center justify-center">

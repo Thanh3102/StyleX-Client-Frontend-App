@@ -1,5 +1,5 @@
 "use client";
-import { Button, ButtonProps, cn, Link } from "@nextui-org/react";
+import { Button, ButtonProps, cn, Link } from "@heroui/react";
 import { getSession } from "next-auth/react";
 import { useMemo, useState } from "react";
 import { FaCartShopping } from "react-icons/fa6";

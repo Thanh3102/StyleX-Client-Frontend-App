@@ -9,7 +9,7 @@ import {
   ModalProps,
   Radio,
   RadioGroup,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { signIn } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";

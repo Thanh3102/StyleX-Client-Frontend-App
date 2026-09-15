@@ -7,7 +7,7 @@ import {
   Button,
   Radio,
   RadioGroup,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { MdOutlineFilterAltOff } from "react-icons/md";

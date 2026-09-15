@@ -7,7 +7,7 @@ import {
   RadioGroup,
   Spinner,
   Tooltip,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useImmer } from "use-immer";
 import { getSession, useSession } from "next-auth/react";
 import {

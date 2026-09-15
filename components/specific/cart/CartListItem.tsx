@@ -10,7 +10,7 @@ import {
 import { CartItem } from "@/app/api/cart/cart.type";
 import RenderIf from "@/components/ui/RenderIf";
 import { ASSET_IMAGE_NOT_FOUND } from "@/util/constaint/asset-url";
-import { Checkbox, cn, Input, Select, SelectItem } from "@nextui-org/react";
+import { Checkbox, cn, Input, Select, SelectItem } from "@heroui/react";
 import { getSession, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";

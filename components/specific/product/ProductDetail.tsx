@@ -8,7 +8,7 @@ import {
   cn,
   Input,
   Tooltip,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useEffect, useMemo, useState } from "react";
 import { useImmer } from "use-immer";
 import DOMPurify from "isomorphic-dompurify";

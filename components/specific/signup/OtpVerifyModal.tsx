@@ -11,7 +11,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalProps,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { SignupData } from "./FormSignup";
 import { SIGN_UP_URL, VERIFY_SIGN_UP_URL } from "@/util/constaint/api-routes";

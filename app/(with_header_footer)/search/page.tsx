@@ -7,7 +7,7 @@ import CustomBreadcrumbs, {
   BreadcrumItemType,
 } from "@/components/ui/CustomBreadcrumbs";
 import LoadingPage from "@/components/ui/LoadingPage";
-import { Input } from "@nextui-org/input";
+import { Input } from "@heroui/input";
 import { Search } from "lucide-react";
 import { Suspense } from "react";
 

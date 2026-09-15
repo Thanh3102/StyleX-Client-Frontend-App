@@ -1,6 +1,6 @@
 import FormSignin from "@/components/specific/signin/FormSignin";
 import { SignUpRoute } from "@/util/constaint/route";
-import { Button, Divider } from "@nextui-org/react";
+import { Button, Divider } from "@heroui/react";
 import Link from "next/link";
 
 const Page = () => {

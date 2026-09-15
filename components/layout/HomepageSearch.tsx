@@ -14,7 +14,7 @@ import { FaExternalLinkAlt, FaHome, FaSearch } from "react-icons/fa";
 import { FaRegUser, FaX } from "react-icons/fa6";
 import Image from "next/image";
 import { GetCollectionResponse } from "@/app/api/collection/collection.type";
-import { cn, Input } from "@nextui-org/react";
+import { cn, Input } from "@heroui/react";
 import { CollectionRoute } from "@/util/constaint/route";
 import { BsCart3 } from "react-icons/bs";
 import { GoHome } from "react-icons/go";

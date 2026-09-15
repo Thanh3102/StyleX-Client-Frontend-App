@@ -1,7 +1,7 @@
 "use client";
 
 import LoginModal from "@/components/ui/LoginModal";
-import { useDisclosure } from "@nextui-org/react";
+import { useDisclosure } from "@heroui/react";
 
 const GuestProfile = () => {
   const { isOpen, onOpenChange, onOpen } = useDisclosure();

@@ -1,5 +1,5 @@
 import ResetPasswordForm from "@/components/specific/reset-password/ResetPasswordForm";
-import { Spinner } from "@nextui-org/react";
+import { Spinner } from "@heroui/react";
 import { Suspense } from "react";
 
 type Props = {

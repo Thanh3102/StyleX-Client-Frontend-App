@@ -5,7 +5,7 @@ import CustomBreadcrumbs, {
   BreadcrumItemType,
 } from "@/components/ui/CustomBreadcrumbs";
 import LoadingPage from "@/components/ui/LoadingPage";
-import { cn } from "@nextui-org/react";
+import { cn } from "@heroui/react";
 import Link from "next/link";
 import { Suspense } from "react";
 
